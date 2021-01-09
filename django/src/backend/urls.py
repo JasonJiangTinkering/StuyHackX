@@ -18,6 +18,8 @@ from django.urls import path, include
 from django.conf.urls import url
 from users.views import GoogleLogin
 
+from users.views import CustomUserViewSet
+from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,3 +27,7 @@ urlpatterns = [
     url(r'^account/', include('allauth.urls')),
     path('auth/google', GoogleLogin.as_view(), name='google_login'),
 ]
+
+router = DefaultRouter()
+router.register(r'users', CustomUserViewSet, basename='user')
+urlpatterns += router.urls
