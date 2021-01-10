@@ -1,0 +1,45 @@
+html{
+    text-align: center;
+    font-size: 3vw;
+}
+
+#mainDiv{
+    text-align: inherit;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+#topStudents{
+    display: inherit;
+    flex-direction: row;    
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+#topSchools{
+    display: relative;
+    width: 100%;
+    height: auto;
+}
+
+h4{
+    position: relative;
+    text-align: left;
+    margin-left: 3em;
+}
+.bigThreeBoxs{
+    width: 22vw;
+    height: 22vw;
+}
+#left-Box{
+    background-color: red;
+}
+#middle-Box{
+    background-color: green;
+}
+#right-Box{
+    background-color: brown;
+}
