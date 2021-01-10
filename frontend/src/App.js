@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import Home from "./Home";
+import PlayButton from "./PlayButton";
 import ButtonAppBar from "./ButtonAppBar";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
         <ButtonAppBar/>
       </header>
-      <Home />
+      <PlayButton/>
     </div>
   );
 }
