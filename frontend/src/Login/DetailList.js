@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { XGrid, useApiRef } from '@material-ui/x-grid';
+import { XGrid, useApiRef, AutoSizer } from '@material-ui/x-grid';
 import { interval } from 'rxjs';
 
 const columns = [
-  { field: 'id' },
-  { field: 'username', width: 150 },
-  { field: 'age', width: 80, type: 'number' },
+  { field: 'id', width: 0},
+  { field: 'username', width:450 },
+  { field: 'age', width: 250,  type: 'number' },
 ];
 
 const rows = [
@@ -40,7 +40,7 @@ export default function DetailList() {
   }, [apiRef]);
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{margin: "auto", height: "400px", width: '80%'}}>
       <XGrid rows={rows} columns={columns} apiRef={apiRef} />
     </div>
   );
