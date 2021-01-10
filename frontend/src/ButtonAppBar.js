@@ -32,7 +32,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             O'mingle
           </Typography>
-          <GoogleSocialAuth />
+          <GoogleSocialAuth/>
         </Toolbar>
       </AppBar>
     </div>
