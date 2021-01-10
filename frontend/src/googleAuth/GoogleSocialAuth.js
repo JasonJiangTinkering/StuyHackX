@@ -11,7 +11,8 @@ class GoogleSocialAuth extends Component {
         <GoogleLogin
           clientId="351400190668-nj6qch3c235giuacshoe15vqfb0iol2a.apps.googleusercontent.com"
           render={renderProps => (<Button color="inherit" onClick={renderProps.onClick}>Login</Button>)}
-          onSuccess={(res) => {googleLogin(res.accessToken).then(r => console.log(r))}}
+          // onSuccess={(res) => {googleLogin(res.accessToken).then(r => console.log(r))}}
+          onSuccess={(res) => (console.log(res.isSignedIn()))}
           onFailure={(res) => console.log(res)}
         />
       </div>
