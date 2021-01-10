@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
     'users',
-    'school'
+    'school',
+    'game_room'
 ]
 
 MIDDLEWARE = [

@@ -32,6 +32,8 @@ class CustomUser(AbstractUser):
         return self.email
 
     def save(self, *args, **kwargs):
+        # if self.nickname is None:
+        #     self.nickname = self.first_name
         if self.school is None:
             email_extension = self.email.split('@')[1]
             school = School.objects.filter(email_extension=email_extension)

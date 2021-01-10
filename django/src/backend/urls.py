@@ -20,6 +20,9 @@ from users.views import GoogleLogin
 
 from users.views import CustomUserViewSet
 from school.views import SchoolViewSet
+
+from game_room.views import GameRoomViewSet
+
 from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
@@ -32,4 +35,5 @@ urlpatterns = [
 router = DefaultRouter()
 router.register(r'users', CustomUserViewSet, basename='user')
 router.register(r'schools', SchoolViewSet, basename='school')
+router.register(r'game_room', GameRoomViewSet, basename='game_room')
 urlpatterns += router.urls
