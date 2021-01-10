@@ -4,7 +4,10 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "latest",
+    "@material-ui/data-grid": "^4.0.0-alpha.15",
     "@material-ui/icons": "latest",
+    "@material-ui/x-grid": "^4.0.0-alpha.15",
+    "@material-ui/x-grid-data-generator": "^4.0.0-alpha.15",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -13,6 +16,7 @@
     "react-dom": "^17.0.1",
     "react-google-login": "^5.2.2",
     "react-scripts": "4.0.1",
+    "rxjs": "^6.6.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
