@@ -8,13 +8,13 @@ function App() {
     <>
     {/*-- Testing for Jason, Login / Start team */}
 
-      <ButtonAppBar/>   
+      {/*<ButtonAppBar/>*/}
       {/* <Login /> */}
 
-      <queue />
+      {/*<queue /> */}
 
 
-    {/*  -- Vivien Client ---
+    {/*-- Vivien Client ---*/}
     <div className="App">
       <header className="App-header">
         <ButtonAppBar/>
@@ -34,7 +34,6 @@ function App() {
       <PlayButton/>
       <FriendsList/>
     </div>
-    */}
     </>
   );
 }

@@ -1,3 +1,6 @@
-html {
-  float:right;
+#FriendsList{
+  position:absolute;
+  right:0;
+  top:64px;
+  height:100%;
 }

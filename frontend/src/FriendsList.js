@@ -7,8 +7,9 @@ import Grid from '@material-ui/core/Grid';
 const FriendsList = () => {
   return (
     <>
-    <Grid item xs={4} sm={4}>
-      <Box bgcolor="primary.main" color="primary.contrastText" p={2}>
+    <Grid item xs={12} sm={4} id= "FriendsList">
+
+      <Box width={300} height= "100%" bgcolor="text.primary" color="primary.contrastText" p={2}>
         Friends List
       </Box>
     </Grid>
