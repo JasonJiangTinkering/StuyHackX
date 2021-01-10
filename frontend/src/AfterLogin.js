@@ -32,6 +32,7 @@ export default function SimpleMenu() {
         <MenuItem onClick={handleClose}>Account</MenuItem>
         <MenuItem onClick={handleClose}>Log Out</MenuItem>
       </Menu>
+      <Button>Play</Button>
     </div>
   );
 }
