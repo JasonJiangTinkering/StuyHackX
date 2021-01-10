@@ -7,7 +7,7 @@ import DetailList  from "./DetailList.js";
 const Login = () => {
 
   // make request to back end
-  const topThreeStudents = ["Jason", "JJ", "Jassoant"]
+  const topThreeStudents = ["Jason", "JJ", "Jassoant"];
   return (
     <>
       <div id = "mainDiv">
