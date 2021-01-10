@@ -24,7 +24,7 @@ def create_access_token(user, room_name):
     api_secret = config('TWILIO_API_SECRET')
 
     # required for Video grant
-    identity = user.nickname
+    identity = user.email
 
     # Create Access Token with credentials
     token = AccessToken(account_sid, api_key, api_secret, identity=identity)
