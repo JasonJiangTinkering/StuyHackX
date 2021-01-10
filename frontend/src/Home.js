@@ -1,11 +1,10 @@
 import "./App.css";
 import React from "react";
-import GoogleSocialAuth from "./googleAuth/GoogleSocialAuth";
 
 const Home = () => {
   return (
     <>
-      <GoogleSocialAuth />
+      <h1>Hello World!</h1>
     </>
   );
 };

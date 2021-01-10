@@ -13,7 +13,8 @@
     "web-vitals": "^0.2.4",
     "@material-ui/core": "latest",
     "@material-ui/core": "latest",
-    "axios": "latest"
+    "axios": "latest",
+    "@material-ui/icons": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
