@@ -1,13 +1,14 @@
 import "./App.css";
 import React from "react";
 import Home from "./Home";
-import GoogleSocialAuth from "./googleAuth/GoogleSocialAuth";
+import AfterLogin from "./AfterLogin";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <GoogleSocialAuth />
+        <Home />
+        <AfterLogin/>
       </header>
     </div>
   );
