@@ -9,7 +9,9 @@ function App() {
     {/*-- Testing for Jason, Login / Start team */}
 
       <ButtonAppBar/>   
-      <Login />
+      {/* <Login /> */}
+
+      <queue />
 
     
     {/*  -- Vivien Client ---
