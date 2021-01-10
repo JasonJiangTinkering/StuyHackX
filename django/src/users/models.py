@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
 from multiselectfield import MultiSelectField
+from school.models import School
 
 # Create your models here.
 class CustomUser(AbstractUser):
@@ -15,7 +16,8 @@ class CustomUser(AbstractUser):
         ('Fencing', 'Fencing')
     )
 
-    school = models.CharField(max_length=200)
+    school = models.ForeignKey(School, verbose_name='school', related_name='students', on_delete=models.CASCADE, null=True)
+
     grade = models.IntegerField(blank=True, null=True)
     default_topics = MultiSelectField(choices=TOPICS_CHOICES)
     nickname = models.CharField(max_length=64)

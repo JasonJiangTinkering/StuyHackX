@@ -19,6 +19,7 @@ from django.conf.urls import url
 from users.views import GoogleLogin
 
 from users.views import CustomUserViewSet
+from school.views import SchoolViewSet
 from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
@@ -30,4 +31,5 @@ urlpatterns = [
 
 router = DefaultRouter()
 router.register(r'users', CustomUserViewSet, basename='user')
+router.register(r'schools', SchoolViewSet, basename='school')
 urlpatterns += router.urls
