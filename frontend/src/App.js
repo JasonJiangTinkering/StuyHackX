@@ -4,22 +4,23 @@ import ButtonAppBar from "./ButtonAppBar";
 import Interests from "./Interests";
 import FriendsList from "./FriendsList";
 import Login from "./Login/Login";
+import Queue from "./Queing/queue.js";
 function App() {
   return (
     <>
 
-    {/* -- Testing for Jason, Login / Start team
+    {/* -- Testing for Jason, Login / Start team */}
     
       <ButtonAppBar/>   
-       <Login /> 
+       {/* <Login />  */}
        
-      <queue /> 
+      <Queue /> 
       
 
 
-      -- Vivien Client --- */}
+      {/* -- Vivien Client --- */}
 
-    <div className="App">
+    {/* <div className="App">
       <header className="App-header">
         <ButtonAppBar/>
       </header>
@@ -37,7 +38,7 @@ function App() {
       </center>
       <PlayButton/>
       <FriendsList/>
-    </div>
+    </div> */}
     
     </>
   );
