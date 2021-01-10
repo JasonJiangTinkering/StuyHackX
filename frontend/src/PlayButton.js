@@ -6,7 +6,7 @@ const PlayButton = () => {
   return (
     <>
     <center>
-      <Button>Default</Button>
+      <Button>PLAY</Button>
       </center>
     </>
   );
