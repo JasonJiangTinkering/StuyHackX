@@ -21,7 +21,7 @@ from users.views import GoogleLogin
 from users.views import CustomUserViewSet
 from school.views import SchoolViewSet
 
-from game_room.views import GameRoomViewSet
+from game_room.views import GameRoomViewSet, TeamViewSet, QueueUp
 
 from rest_framework.routers import DefaultRouter
 
@@ -30,10 +30,13 @@ urlpatterns = [
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^account/', include('allauth.urls')),
     path('auth/google', GoogleLogin.as_view(), name='google_login'),
+    path('queue_up', QueueUp.as_view(), name='queue up')
 ]
 
 router = DefaultRouter()
 router.register(r'users', CustomUserViewSet, basename='user')
 router.register(r'schools', SchoolViewSet, basename='school')
 router.register(r'game_room', GameRoomViewSet, basename='game_room')
+router.register(r'team', TeamViewSet, basename='team')
+
 urlpatterns += router.urls
