@@ -14,6 +14,7 @@ class GoogleSocialAuth extends Component {
           // onSuccess={(res) => {googleLogin(res.accessToken).then(r => console.log(r))}}
           onSuccess={(res) => (console.log(res.isSignedIn()))}
           onFailure={(res) => console.log(res)}
+          cookiePolicy={'single_host_origin'}
         />
       </div>
     );
