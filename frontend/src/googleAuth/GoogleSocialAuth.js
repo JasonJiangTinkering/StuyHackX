@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import GoogleLogin from 'react-google-login';
-import googleLogin from './GoogleLogin'
+import googleLogin from './GoogleLogin';
 import { Button } from "@material-ui/core";
 
 class GoogleSocialAuth extends Component {
