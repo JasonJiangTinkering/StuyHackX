@@ -1,11 +1,21 @@
-import React from "react";
+import React, { Component } from "react"
 
-const UserContext = React.createContext({
-  signedIn: false,
+const UserContext = React.createContext();
+
+const UserProvider = UserContext.Provider;
+
+const data = {
+	isSignedIn: false,
 	firstName: "",
-	lastName: "",
-	email: "",
-	picture: ""
-});
+	lastName: ""
+};
 
-export default UserContext
+class UserContextProvider extends Component {
+  render() {
+    return (
+      <UserProvider value={data}>{this.props.children}</UserProvider>
+    )
+  }
+}
+
+export { UserContext, UserContextProvider }

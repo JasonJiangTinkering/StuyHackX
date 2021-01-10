@@ -3,7 +3,6 @@ import PlayButton from "./PlayButton";
 import ButtonAppBar from "./ButtonAppBar";
 import Interests from "./Interests";
 import FriendsList from "./FriendsList";
-import Login from "./Login";
 function App() {
   return (
     <>
