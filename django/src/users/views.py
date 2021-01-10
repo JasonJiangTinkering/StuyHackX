@@ -5,6 +5,9 @@ from rest_auth.registration.serializers import SocialLoginSerializer
 from rest_framework import viewsets
 from users.models import CustomUser
 from users.serializers import CustomUserSerializer
+from rest_framework.response import Response
+from rest_framework.decorators import action
+
 
 
 class GoogleLogin(SocialLoginView):
@@ -22,3 +25,40 @@ class GoogleLogin(SocialLoginView):
 class CustomUserViewSet(viewsets.ModelViewSet):
     serializer_class = CustomUserSerializer
     queryset = CustomUser.objects.all()
+
+    @action(detail=True, methods=['get'])
+    def add_friend(self, request, pk=None):
+        user = self.get_object()
+        friend_id = request.query_params.get(
+            'friend_id'
+        )
+        friend_obj = CustomUser.objects.get(id=friend_id)
+        
+        user.friends.add(friend_obj)
+
+        return Response({'status': 'Friend Added'})
+
+    @action(detail=True, methods=['get'])
+    def remove_friend(self, request, pk=None):
+        user = self.get_object()
+        friend_id = request.query_params.get(
+            'friend_id'
+        )
+        friend_obj = CustomUser.objects.get(id=friend_id)
+        
+        user.friends.remove(friend_obj)
+
+        return Response({'status': 'Friend Removed'})
+
+    @action(detail=True, methods=['get'])
+    def get_friend_list(self, request, pk=None):
+        user = self.get_object()
+        friends = user.friends.all()
+        serializer = CustomUserSerializer(friends, many=True)
+        return Response(serializer.data)
+
+
+    def list(self, request):
+        queryset = CustomUser.objects.all().order_by('-score')
+        serializer = CustomUserSerializer(queryset, many=True)
+        return Response(serializer.data)

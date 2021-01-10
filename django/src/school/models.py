@@ -11,7 +11,8 @@ class School(models.Model):
         return_val = 0
         scores = self.students.all().values_list('score', flat=True)
         for i in scores:
-            return_val += i
+            if not i == None :
+                return_val += i
         return return_val
 
     def __str__(self):
