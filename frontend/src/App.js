@@ -5,6 +5,7 @@ import Interests from "./Interests";
 import FriendsList from "./FriendsList";
 import Login from "./Login/Login";
 import Queue from "./Queing/queue.js";
+import Go from "./Go/Go.js";
 function App() {
   return (
     <>
@@ -14,7 +15,8 @@ function App() {
       <ButtonAppBar/>   
        {/* <Login />  */}
        
-      <Queue /> 
+      {/* <Queue />  */}
+      <Go />
       
 
 
