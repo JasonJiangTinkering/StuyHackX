@@ -7,6 +7,7 @@ from decouple import config
 
 from users.models import CustomUser
 
+
 def create_room(room_name):
     # Your Account Sid and Auth Token from twilio.com/console
     # and set the environment variables. See http://twil.io/secure
@@ -17,6 +18,7 @@ def create_room(room_name):
     room = client.video.rooms.create(unique_name=room_name)
 
     return room
+
 
 def create_access_token(user, room_name):
     account_sid = config('TWILIO_ACCOUNT_SID')
@@ -36,11 +38,13 @@ def create_access_token(user, room_name):
     # Return token info as JSON
     return token.to_jwt()
 
+
 def create_game_room(user1, user2, user3, user4):
     game_room = GameRoom.objects.create()
 
     # creating team one and its room
-    room = create_room(user1.nickname + " - " + user2.nickname)
+    room = create_room(user1.first_name + str(user1.id) +
+                       " - " + user2.first_name)
 
     team1 = Team.objects.create(room_sid=room.sid)
 
@@ -55,7 +59,8 @@ def create_game_room(user1, user2, user3, user4):
     game_room.teams.add(team1)
 
     # creating team two and its room
-    room = create_room(user3.nickname + " - " + user4.nickname)
+    room = create_room(user3.first_name + str(user3.id) +
+                       " - " + user4.first_name)
 
     team2 = Team.objects.create(room_sid=room.sid)
 
@@ -69,13 +74,13 @@ def create_game_room(user1, user2, user3, user4):
     # adding team2 to the game room
     game_room.teams.add(team2)
 
-
     # saving all models
     team1.save()
     team2.save()
     game_room.save()
 
     return game_room
+
 
 def test():
     queryset = CustomUser.objects.all()

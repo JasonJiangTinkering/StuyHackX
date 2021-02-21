@@ -8,6 +8,7 @@ from users.models import CustomUser
 from rest_framework.views import APIView
 from game_room.utils import create_game_room
 from django.http import JsonResponse
+from django.db.models import Q
 
 from game_room.utils import create_access_token
 # Create your views here.
@@ -33,11 +34,19 @@ class TeamViewSet(viewsets.ModelViewSet):
         user_id = request.user.id
         user = CustomUser.objects.get(id=user_id)
         queryset = user.teams.all()
-        print(user, queryset)
+        opponents = user.teams.all()
+        if(user.teams.all().exists()):
+            opponents = user.teams.all()[0].game_room.all()[
+                0].teams.filter(~Q(id=queryset[0].id))
+
+        opponents_serialize = TeamSerializer(opponents, many=True)
+
         serialize = TeamSerializer(queryset, many=True)
+        # print(serialize, opponents_serialize)
         queryroom_serialize = QueueRoomSerializer(queueroom)
         return Response({
             'team': serialize.data,
+            'opponents': opponents_serialize.data,
             'queryroom': queryroom_serialize.data
         })
 
