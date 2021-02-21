@@ -1,6 +1,6 @@
 from twilio.rest import Client
 from twilio.jwt.access_token import AccessToken
-from twilio.jwt.access_token.grants import VideoGrant
+from twilio.jwt.access_token.grants import VideoGrant, ChatGrant
 from game_room.models import GameRoom, Team
 
 from decouple import config
@@ -15,8 +15,10 @@ def create_room(room_name):
     auth_token = config('TWILIO_AUTH_TOKEN')
     client = Client(account_sid, auth_token)
 
-    room = client.video.rooms.create(unique_name=room_name)
-
+    try:
+        room = client.video.rooms.create(unique_name=room_name)
+    except:
+        room = client.video.rooms(room_name).fetch()
     return room
 
 
@@ -24,6 +26,8 @@ def create_access_token(user, room_name):
     account_sid = config('TWILIO_ACCOUNT_SID')
     api_key = config('TWILIO_API_KEY')
     api_secret = config('TWILIO_API_SECRET')
+
+    service_sid = config('TWILIO_CHAT_SERVICE_SID')
 
     # required for Video grant
     identity = user.email
@@ -34,6 +38,10 @@ def create_access_token(user, room_name):
     # Create a Video grant and add to token
     video_grant = VideoGrant(room=room_name)
     token.add_grant(video_grant)
+
+    # Create a Chat grant and add to token
+    chat_grant = ChatGrant(service_sid=service_sid)
+    token.add_grant(chat_grant)
 
     # Return token info as JSON
     return token.to_jwt()
