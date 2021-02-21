@@ -7,11 +7,16 @@ from rest_framework.decorators import action
 from users.models import CustomUser
 from rest_framework.views import APIView
 from game_room.utils import create_game_room
+from django.http import JsonResponse
+
+from game_room.utils import create_access_token
 # Create your views here.
+
 
 class GameRoomViewSet(viewsets.ModelViewSet):
     serializer_class = GameRoomSerializer
     queryset = GameRoom.objects.all()
+
 
 class TeamViewSet(viewsets.ModelViewSet):
     serializer_class = TeamSerializer
@@ -25,20 +30,28 @@ class TeamViewSet(viewsets.ModelViewSet):
             create_game_room(players[0], players[1], players[2], players[3])
             queueroom.players_waiting.remove(*players)
 
-        user_id = request.query_params.get(
-            'user_id'
-        )
+        user_id = request.user.id
         user = CustomUser.objects.get(id=user_id)
         queryset = user.teams.all()
         print(user, queryset)
         serialize = TeamSerializer(queryset, many=True)
-        return Response(serialize.data)
+        queryroom_serialize = QueueRoomSerializer(queueroom)
+        return Response({
+            'team': serialize.data,
+            'queryroom': queryroom_serialize.data
+        })
+
+    @action(detail=False, methods=['get'])
+    def get_access_token(self, request):
+        token = create_access_token(CustomUser.objects.get(id=1), 'cool-room')
+        result = {"accessToken": token}
+        return Response(result)
 
 
 class QueueUp(APIView):
     def get(self, request, format=None):
         queueroom = QueueRoom.objects.get_or_create(id=1)[0]
-        user_id = request.query_params.get('user_id')
+        user_id = request.user.id
         user = CustomUser.objects.get(id=user_id)
         queueroom.players_waiting.add(user)
         queueroom.save()

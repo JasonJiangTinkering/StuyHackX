@@ -19,3 +19,7 @@ migrate:
 .PHONY: shell
 shell:
 	python3 manage.py shell
+
+.PHONY: runserver
+runserver:
+	python3 manage.py runserver
